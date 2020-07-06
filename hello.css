@@ -1,0 +1,62 @@
+:root {
+	--dark-grayish-blue: rgb(72, 85, 106);
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	background-color: pink;
+	color: white;
+	height: 100vh;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1 {
+	--height: 6rem;
+	position: relative;
+	font-size: 10rem;
+	cursor: pointer;
+}
+
+h1::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: calc(-10rem + var(--height));
+	transform: translateX(-50%) scale(0);
+	z-index: 100;
+	border: 2rem solid transparent;
+	border-top-color: var(--dark-grayish-blue);
+
+	opacity: 0;
+	transition: all 0.25s ease;
+	transform-origin: top center;
+}
+
+h1::before {
+	content: 'Hello World';
+	position: absolute;
+	left: 50%;
+	top: -10rem;
+	transform: translateX(-50%) scale(0);
+	background-color: var(--dark-grayish-blue);
+	border-radius: 1rem;
+	height: var(--height);
+	padding: 0 1rem;
+	font-size: 4rem;
+
+	opacity: 0;
+	transition: all 0.25s ease;
+	transform-origin: bottom center;
+}
+
+h1:hover::before,
+h1:hover::after {
+	transform: translateX(-50%) scale(1);
+	opacity: 1;
+}
